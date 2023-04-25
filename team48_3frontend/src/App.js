@@ -4,14 +4,17 @@ import "./style.css";
 import React, { useState } from "react";
 //import { useEffect } from "react";
 import { Products } from "./Products";
-import { Categories } from "./Categories";
 import Cart from "./cart";
+import Crud from "./crud";
 import About from "./About";
 import Credits from "./Credits";
 import Footer from "./Footer";
 import LeftPanel from "./LeftPanel";
 import Browse from "./browseProducts";
-
+import ShowAll from "./showAll";
+import Add from "./add";
+import Remove from "./remove";
+import Update from "./update";
 
 export const App = (confimation) => {
   console.log("Step 1: After reading file :");
@@ -19,12 +22,19 @@ export const App = (confimation) => {
   const [query, setQuery] = useState(""); //Used for the search bar
   const [cart, setCart] = useState(Array(ProductsCategory.length).fill(0)); //Creates an array with the number of categories all filled with 0
   const [isCartVisible, setIsCartVisible] = useState(false); //Items that have been added to your cart
-  const [isCardsVisible, setIsCardsVisible] = useState(true); //Initial cards that appear on the screen
-  const [showCategories, setShowCategories] = useState("true"); //Filter buttons on the side of the screen
+  const [isCardsVisible, setIsCardsVisible] = useState(false); //Initial cards that appear on the screen
+  const [showCategories, setShowCategories] = useState("false"); //Filter buttons on the side of the screen
   const [showCustomForm, setCustomForm] = useState(false);
   const [showFooter, setShowFooter] = useState(true); //Footer doesn't appear on confirmation
   const [showAbout, setShowAbout] = useState(false); //About page
   const [showCredits, setShowCredits] = useState(false); //Credits page
+  const [isCrudVisable, setIsCrudVisable] = useState(true); //crud buttons
+
+  const [showAllView, setShowAllView] = useState(false); //show all button
+  const [showAddView, setShowAddView] = useState(false); //Add button
+  const [showRemoveView, setShowRemoveView] = useState(false); //remove button
+  const [showUpdateView, setShowUpdateView] = useState(false); //update button
+  const [isCrudBackVisable, setCrudBackVisable] = useState(false); //crud back button
 
   const render_products = (ProductsCategory) => {
     return (
@@ -62,7 +72,9 @@ export const App = (confimation) => {
             onClick={() => {
               setIsCartVisible(!isCartVisible);
               setIsCardsVisible(!isCardsVisible);
-              {console.log("IS CART VIASABLE",isCartVisible)}
+              {
+                console.log("IS CART VIASABLE", isCartVisible);
+              }
               if (showCategories == "back" || showCategories == "true") {
                 //When you click the back arrow, it takes you back to a "fresh" screen showing all the products
                 setProductsCategory(Products);
@@ -81,24 +93,124 @@ export const App = (confimation) => {
             {showCategories == "confirmation" && ""}
           </div>
         </div>
-       { <Cart
-          isCartVisible={isCartVisible}
-          cart={cart}
-          ProductsCategory={ProductsCategory}
-          setShowCategories={setShowCategories}
-          setShowFooter={setShowFooter}
-          showCustomForm = {showCustomForm}
-        />}
-        {console.log("IS CART VISABLE: ", isCartVisible)}
-        {(
-          <Browse
-            ProductsCategory = {ProductsCategory}
-            isCardsVisible = {isCardsVisible}
-            cart = {cart}
-            setCart = {setCart}
-            setCustomForm = {setCustomForm}
+        {
+          <Cart
+            isCartVisible={isCartVisible}
+            cart={cart}
+            ProductsCategory={ProductsCategory}
+            setShowCategories={setShowCategories}
+            setShowFooter={setShowFooter}
+            showCustomForm={showCustomForm}
           />
+        }
+        {console.log("IS CART VISABLE: ", isCartVisible)}
+        {
+          <Crud
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
+            setShowAllView={setShowAllView}
+            showAddView={showAddView}
+            setShowAddView={setShowAddView}
+            showRemoveView={showRemoveView}
+            setShowRemoveView={setShowRemoveView}
+            showUpdateView={showUpdateView}
+            setShowUpdateView={setShowUpdateView}
+            isCrudBackVisable={isCrudBackVisable}
+            setCrudBackVisable={setCrudBackVisable}
+          />
+        }
+        {isCrudBackVisable && (
+          <>
+            <button
+              key="crudBackButton"
+              className="crudButtons"
+              onClick={() => {
+                setCrudBackVisable(false);
+                setIsCrudVisable(true);
+                setShowAllView(false);
+                setShowAddView(false);
+                setShowRemoveView(false);
+                setShowUpdateView(false);
+              }}
+            >
+              Back
+            </button>
+          </>
         )}
+        {
+          <ShowAll
+            showAllView={showAllView}
+            setShowAllView={setShowAllView}
+            showAddView={showAddView}
+            setShowAddView={setShowAddView}
+            showRemoveView={showRemoveView}
+            setShowRemoveView={setShowRemoveView}
+            showUpdateView={showUpdateView}
+            setShowUpdateView={setShowUpdateView}
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
+            isCrudBackVisable={isCrudBackVisable}
+            setCrudBackVisable={setCrudBackVisable}
+          />
+        }
+        {
+          <Add
+            showAllView={showAllView}
+            setShowAllView={setShowAllView}
+            showAddView={showAddView}
+            setShowAddView={setShowAddView}
+            showRemoveView={showRemoveView}
+            setShowRemoveView={setShowRemoveView}
+            showUpdateView={showUpdateView}
+            setShowUpdateView={setShowUpdateView}
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
+            isCrudBackVisable={isCrudBackVisable}
+            setCrudBackVisable={setCrudBackVisable}
+          />
+        }
+        {
+          <Remove
+            showAllView={showAllView}
+            setShowAllView={setShowAllView}
+            showAddView={showAddView}
+            setShowAddView={setShowAddView}
+            showRemoveView={showRemoveView}
+            setShowRemoveView={setShowRemoveView}
+            showUpdateView={showUpdateView}
+            setShowUpdateView={setShowUpdateView}
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
+            isCrudBackVisable={isCrudBackVisable}
+            setCrudBackVisable={setCrudBackVisable}
+          />
+        }
+        {
+          <Update
+            showAllView={showAllView}
+            setShowAllView={setShowAllView}
+            showAddView={showAddView}
+            setShowAddView={setShowAddView}
+            showRemoveView={showRemoveView}
+            setShowRemoveView={setShowRemoveView}
+            showUpdateView={showUpdateView}
+            setShowUpdateView={setShowUpdateView}
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
+            isCrudBackVisable={isCrudBackVisable}
+            setCrudBackVisable={setCrudBackVisable}
+          />
+        }
+
+        {
+          <Browse
+            ProductsCategory={ProductsCategory}
+            isCardsVisible={isCardsVisible}
+            cart={cart}
+            setCart={setCart}
+            setCustomForm={setCustomForm}
+          />
+        }
       </div>
     );
   };
@@ -110,16 +222,15 @@ export const App = (confimation) => {
         Products.length,
         ProductsCategory.length
       )}
-        {(
-          <LeftPanel
-            showCategories={showCategories}
-            query = {query}
-            setQuery = {setQuery}
-            ProductsCategory = {ProductsCategory}
-            setProductsCategory = {setProductsCategory}
-
-          />
-        )}
+      {
+        <LeftPanel
+          showCategories={showCategories}
+          query={query}
+          setQuery={setQuery}
+          ProductsCategory={ProductsCategory}
+          setProductsCategory={setProductsCategory}
+        />
+      }
       <div className="ml-5 p-10 xl:basis-4/5">
         {console.log(
           "Before render :",
@@ -137,7 +248,6 @@ export const App = (confimation) => {
           setShowCredits={setShowCredits}
           showFooter={showFooter}
           setShowFooter={setShowFooter}
-
         />
       }
     </div>

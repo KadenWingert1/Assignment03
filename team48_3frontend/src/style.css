@@ -22,9 +22,9 @@ body {
 .cartItems {
   display: flex;
 }
-
-/*All for the checkout buttons*/
-.checkoutButton {
+/*All for the checkout buttons/crud*/
+.checkoutButton,
+.crudButtons {
   align-items: center;
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -51,23 +51,35 @@ body {
   width: auto;
 }
 .checkoutButton:hover,
-.checkoutButton:focus {
+.checkoutButton:focus,
+.crudButtons:hover,
+.crudButtons:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);
 }
-.checkoutButton:hover {
+.checkoutButton:hover,
+.crudButtons:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
-.checkoutButton:active {
+.checkoutButton:active,
+.crudButtons:active {
   background-color: #f0f0f1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
-/*Last of checkout buttons*/
+.crudButtons{
+
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  width: 100px;
+  height: 40px;
+  white-space: nowrap;
+}
+/*Last of checkout/crud buttons*/
 
 /*Sizes the Back button image*/
 .back {
