@@ -12,9 +12,18 @@ function Crud({
   showUpdateView,
   setShowUpdateView,
   isCrudBackVisable,
-  setCrudBackVisable
+  setCrudBackVisable,
+  product,
+  setProduct,
+  viewer1,
+  setViewer1,
+  oneProduct,
+  setOneProduct,
+  viewer2,
+  setViewer2
 }) {
 
+  
   return (
     <div>
       {isCrudVisable == true && (

@@ -1,5 +1,6 @@
 import "./App.css";
 import "./style.css";
+import './tailwind.css';
 
 import React, { useState } from "react";
 //import { useEffect } from "react";
@@ -35,6 +36,11 @@ export const App = (confimation) => {
   const [showRemoveView, setShowRemoveView] = useState(false); //remove button
   const [showUpdateView, setShowUpdateView] = useState(false); //update button
   const [isCrudBackVisable, setCrudBackVisable] = useState(false); //crud back button
+
+  const [product, setProduct] = useState([]);
+  const [viewer1, setViewer1] = useState(false);
+  const [oneProduct, setOneProduct] = useState([]);
+  const [viewer2, setViewer2] = useState(false);
 
   const render_products = (ProductsCategory) => {
     return (
@@ -117,6 +123,14 @@ export const App = (confimation) => {
             setShowUpdateView={setShowUpdateView}
             isCrudBackVisable={isCrudBackVisable}
             setCrudBackVisable={setCrudBackVisable}
+            product={product}
+            setProduct={setProduct}
+            viewer1={viewer1}
+            setViewer1={setViewer1}
+            oneProduct={oneProduct}
+            setOneProduct={setOneProduct}
+            viewer2={viewer2}
+            setViewer2={setViewer2}
           />
         }
         {isCrudBackVisable && (
@@ -151,6 +165,14 @@ export const App = (confimation) => {
             setIsCrudVisable={setIsCrudVisable}
             isCrudBackVisable={isCrudBackVisable}
             setCrudBackVisable={setCrudBackVisable}
+            product={product}
+            setProduct={setProduct}
+            viewer1={viewer1}
+            setViewer1={setViewer1}
+            oneProduct={oneProduct}
+            setOneProduct={setOneProduct}
+            viewer2={viewer2}
+            setViewer2={setViewer2}
           />
         }
         {
@@ -167,6 +189,14 @@ export const App = (confimation) => {
             setIsCrudVisable={setIsCrudVisable}
             isCrudBackVisable={isCrudBackVisable}
             setCrudBackVisable={setCrudBackVisable}
+            product={product}
+            setProduct={setProduct}
+            viewer1={viewer1}
+            setViewer1={setViewer1}
+            oneProduct={oneProduct}
+            setOneProduct={setOneProduct}
+            viewer2={viewer2}
+            setViewer2={setViewer2}
           />
         }
         {
@@ -183,6 +213,14 @@ export const App = (confimation) => {
             setIsCrudVisable={setIsCrudVisable}
             isCrudBackVisable={isCrudBackVisable}
             setCrudBackVisable={setCrudBackVisable}
+            product={product}
+            setProduct={setProduct}
+            viewer1={viewer1}
+            setViewer1={setViewer1}
+            oneProduct={oneProduct}
+            setOneProduct={setOneProduct}
+            viewer2={viewer2}
+            setViewer2={setViewer2}
           />
         }
         {
@@ -199,6 +237,14 @@ export const App = (confimation) => {
             setIsCrudVisable={setIsCrudVisable}
             isCrudBackVisable={isCrudBackVisable}
             setCrudBackVisable={setCrudBackVisable}
+            product={product}
+            setProduct={setProduct}
+            viewer1={viewer1}
+            setViewer1={setViewer1}
+            oneProduct={oneProduct}
+            setOneProduct={setOneProduct}
+            viewer2={viewer2}
+            setViewer2={setViewer2}
           />
         }
 

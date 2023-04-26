@@ -13,6 +13,14 @@ function Add({
   setIsCrudVisable,
   isCrudBackVisable,
   setCrudBackVisable,
+  product,
+  setProduct,
+  viewer1,
+  setViewer1,
+  oneProduct,
+  setOneProduct,
+  viewer2,
+  setViewer2
 }) {
   return (
     <>
