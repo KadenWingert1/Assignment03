@@ -36,10 +36,10 @@ function About({
               className="aboutBack"
               onClick={(event) => {
                 setShowAbout(false);
-                setIsCardsVisible(true);
-                setShowCategories(true);
+               // setIsCardsVisible(true);
+                //setShowCategories(true);
                 setIsCartVisible(false);
-                setShowCategories("true");
+                //setShowCategories("true");
               }}
             >
               Back

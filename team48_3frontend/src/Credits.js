@@ -42,10 +42,10 @@ function Credits({
               className="creditsBack"
               onClick={(event) => {
                 setShowCredits(false);
-                setIsCardsVisible(true);
-                setShowCategories(true);
+                //setIsCardsVisible(true);
+               // setShowCategories(true);
                 setIsCartVisible(false);
-                setShowCategories("true");
+                //setShowCategories("true");
               }}
             >
               Back
