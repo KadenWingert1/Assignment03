@@ -79,9 +79,7 @@ export const App = (confimation) => {
             onClick={() => {
               setIsCartVisible(!isCartVisible);
               setIsCardsVisible(!isCardsVisible);
-              {
-                console.log("IS CART VIASABLE", isCartVisible);
-              }
+          
               if (showCategories == "back" || showCategories == "true") {
                 //When you click the back arrow, it takes you back to a "fresh" screen showing all the products
                 setProductsCategory(Products);
