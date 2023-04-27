@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React from "react";
 import { Products } from "./Products";
 
 function Crud({
@@ -20,62 +20,61 @@ function Crud({
   oneProduct,
   setOneProduct,
   viewer2,
-  setViewer2
+  setViewer2,
 }) {
-
-  
   return (
     <div>
       {isCrudVisable == true && (
-        <div>
-          <button
-            key="All"
-            className="crudButtons"
-            onClick={() => {
-              setShowAllView(true);
-              setCrudBackVisable(true);
-              setIsCrudVisable(false);
-            }}
-          >
-            View All
-          </button>
+        <div className="d-flex justify-content-center">
+          <div className="btn-group" role="group">
+            <button
+              key="All"
+              className="btn btn-primary btn-lg"
+              onClick={() => {
+                setShowAllView(true);
+                setCrudBackVisable(true);
+                setIsCrudVisable(false);
+              }}
+            >
+              View All
+            </button>
 
-          <button
-            key="Add"
-            className="crudButtons"
-            onClick={() => {
-              setShowAddView(true);
-              setCrudBackVisable(true);
-              setIsCrudVisable(false);
-            }}
-          >
-            Add
-          </button>
+            <button
+              key="Add"
+              className="btn btn-primary btn-lg"
+              onClick={() => {
+                setShowAddView(true);
+                setCrudBackVisable(true);
+                setIsCrudVisable(false);
+              }}
+            >
+              Add
+            </button>
 
-          <button
-            key="Remove"
-            className="crudButtons"
-            onClick={() => {
-              setShowRemoveView(true);
-              setCrudBackVisable(true);
-              setIsCrudVisable(false);
-            }}
-          >
-            Remove
-          </button>
+            <button
+              key="Remove"
+              className="btn btn-primary btn-lg"
+              onClick={() => {
+                setShowRemoveView(true);
+                setCrudBackVisable(true);
+                setIsCrudVisable(false);
+              }}
+            >
+              Remove
+            </button>
 
-          <button
-            key="Update"
-            className="crudButtons"
-            onClick={() => {
-              setShowUpdateView(true);
-              setCrudBackVisable(true);
-              setIsCrudVisable(false);
-            }}
-          >
-            Update
-          </button>
-
+            <button
+              key="Update"
+              className="btn btn-primary btn-lg"
+              onClick={() => {
+                setShowUpdateView(true);
+                setCrudBackVisable(true);
+                setIsCrudVisable(false);
+              }}
+            >
+              Update
+            </button>
+          </div>
         </div>
       )}
     </div>

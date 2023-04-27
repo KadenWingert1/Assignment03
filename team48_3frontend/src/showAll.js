@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React from "react";
 function ShowAll({
   showAllView,
   setShowAllView,
@@ -50,57 +49,64 @@ function ShowAll({
       console.log("Wrong number of Product id.");
     }
   }
-
   const showAllItems = product.map((el) => (
-    <div key={el._id}>
-      <img src={el.image} width={30} /> <br />
-      Title: {el.title} <br />
-      Category: {el.category} <br />
-      Price: {el.price} <br />
-      Rate: {el.rating.rate} and Count: {el.rating.count} <br />
+    <div key={el._id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
+      <img src={el.image} width={150} className="img-fluid img-thumbnail"/> <br />
+      <span className="fw-bold">Title:</span> {el.title} <br />
+      <span className="fw-bold">Category:</span> {el.category} <br />
+      <span className="fw-bold">Price:</span> ${el.price} <br />
+      <span className="fw-bold">Rate:</span> {el.rating.rate} and <span className="fw-bold">Count:</span> {el.rating.count} <br />
     </div>
   ));
-
+  
   const showOneItem = oneProduct.map((el) => (
-    <div key={el._id}>
-      <img src={el.image} width={30} /> <br />
-      Title: {el.title} <br />
-      Category: {el.category} <br />
-      Price: ${el.price} <br />
-      Rate: {el.rating.rate} and Count: {el.rating.count} <br />
+    <div key={el._id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
+      <img src={el.image} width={150} className="img-fluid img-thumbnail" /> <br />
+      <span className="fw-bold">Title:</span> {el.title} <br />
+      <span className="fw-bold">Category:</span> {el.category} <br />
+      <span className="fw-bold">Price:</span> ${el.price} <br />
+      <span className="fw-bold">Rate:</span> {el.rating.rate} and <span className="fw-bold">Count:</span> {el.rating.count} <br />
     </div>
   ));
-
   return (
     <>
-     {isCrudBackVisable && showAllView && (
-  <div className="viewAllProducts crud">
-    <h1 className="catalogOfProducts">Catalog of Products </h1>
-    <div className="show-all-row">
-      <h1 className="showAllavailable">Show all available Products:</h1>
-      <button className="show-all-btn" onClick={() => getAllProducts()}>Show All Users</button>
+{isCrudBackVisable && showAllView && (
+  <div className="viewAllProducts crud container-fluid p-5" style={{ backgroundColor: "burlywood" }}>
+    <h1 className="catalogOfProducts mb-5">Catalog of Products</h1>
+    <div className="row justify-content-between align-items-center mb-5">
+      <h2 className="showAllavailable">Show All Available Products:</h2>
+      <button className="btn btn-outline-secondary" onClick={() => getAllProducts()}>Show All</button>
     </div>
-    <hr></hr>
-    {viewer1 && <div className="products">{showAllItems}</div>}
-    <hr></hr>
+    <hr />
+    {viewer1 && <div className="row products">{showAllItems}</div>}
+    <hr />
     <div className="oneProductContainer">
-      <h1 className="oneProduct">Show one Product by Id:</h1>
+      <h2 className="oneProduct">Show One Product by ID:</h2>
+      <div className="input-group mb-3">
         <input
           type="text"
-          id="message"
-          name="message"
-          placeholder="ID"
+          id="productId"
+          className="form-control"
+          placeholder="Product ID"
+          aria-label="Product ID"
+          aria-describedby="button-addon2"
           onChange={(e) => getOneProduct(e.target.value)}
         />
-        <button className="show-one-btn" onClick={() => getOneProduct(document.getElementById("message").value)}>Show</button>
-
-      {viewer2 && <div className="products">{showOneItem}</div>}
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+          onClick={() => getOneProduct(document.getElementById("productId").value)}
+        >
+          Show
+        </button>
+      </div>
+      {viewer2 && <div className="row products">{showOneItem}</div>}
     </div>
-    <hr></hr>
+    <hr />
   </div>
 )}
     </>
   );
 }
-
 export default ShowAll;

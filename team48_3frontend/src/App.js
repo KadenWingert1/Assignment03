@@ -1,6 +1,7 @@
 import "./App.css";
 import "./style.css";
 import './tailwind.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { useState } from "react";
 //import { useEffect } from "react";
@@ -262,7 +263,7 @@ export const App = (confimation) => {
   };
 
   return (
-    <div className="flex min-h-screen flex-row" style={{ height: "56em" }}>
+    <div className="flex min-h-screen flex-row" style={{ height: "56em", backgroundColor:"burlywood" }}>
       {console.log(
         "Step 2 : Return App :",
         Products.length,
