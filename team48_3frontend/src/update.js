@@ -39,15 +39,20 @@ function Update({
       console.log("Wrong number of Product id.");
     }
   }
-  function updatePrice(id) {
+  async function updatePrice(id) {
     const newPrice = document.getElementById("newPrice").value;
-    fetch(`http://localhost:4000/${id}`, {
+    console.log("IN UPDATE PRICE, Element's ID: ", document.getElementById("message").value);
+    console.log("IN UPDATE PRICE, New price: ", document.getElementById("newPrice").value);
+    await fetch('http://localhost:4000/update/' + id, {
       method: "PUT",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ price: newPrice }),
-    })
+      body: JSON.stringify({ 
+        price: newPrice }),
+    }
+    )
       .then((response) => {
         if (response.ok) {
+          console.log("Fetch works");
           return response.json();
         } else {
           throw new Error("Failed to update price");
@@ -109,7 +114,7 @@ function Update({
             <br />
             {viewer2 && (
               <div className="input-group mb-3">
-                <h1 className="oneProduct">Enter new Price: </h1>
+                <h1 className="oneProduct">Enter new Price:</h1>
                 <input
                   type="text"
                   id="newPrice"

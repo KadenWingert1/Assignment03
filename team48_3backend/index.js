@@ -57,6 +57,14 @@ app.post("/add", async (req, res) => {
 
 
 
+app.put("/update/:id", async (req, resp) => {
+  const id = req.params.id;
+  const query = { _id: id };
+  const oneProduct = await Product.findOneAndUpdate(id, 20);
+  console.log(oneProduct);
+  resp.send(oneProduct);
+});
+
 app.listen(port, () => {
   console.log(`App listening at http://%s:%s`, host, port);
 });
