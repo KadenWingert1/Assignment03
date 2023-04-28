@@ -102,7 +102,12 @@ function Add({ showAddView }) {
         className="input"
       />
       <label>Category</label>
-      <select name="category" id="category" onChange={handleCategoryChange} className="select">
+      <select
+        name="category"
+        id="category"
+        onChange={handleCategoryChange}
+        className="select"
+      >
         <option value="">--Select Category--</option>
         <option value="Pocket Knives">Pocket Knives</option>
         <option value="Daggers">Daggers</option>
