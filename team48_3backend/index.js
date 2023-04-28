@@ -31,6 +31,32 @@ app.get("/:id", async (req, resp) => {
   resp.send(oneProduct);
 });
 
+app.post("/add", async (req, res) => {
+  console.log("Request body:", req.body);
+  let product = new Product({
+      title: req.body.title,
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      image: req.body.image,
+      rating: req.body.rating
+  });
+
+  console.log("Product to be saved:", product);
+
+  try {
+      const savedProduct = await product.save();
+      res.status(201).json(savedProduct);
+  } catch (error) {
+      res.status(400).json({ message: error.message });
+  }
+});
+
+
+
+
+
+
 app.listen(port, () => {
   console.log(`App listening at http://%s:%s`, host, port);
 });
