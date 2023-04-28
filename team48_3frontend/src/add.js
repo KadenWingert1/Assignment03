@@ -9,16 +9,16 @@ function Add({ showAddView }) {
     image: "",
     rating: { rate: 0, count: 0 },
   });
-  
+
   const [productId, setProductId] = useState(1); // or whatever starting number you like
 
   function addProduct(e) {
     e.preventDefault();
-  
+
     const newProduct = {
-      ...product
+      ...product,
     };
-  
+
     fetch("http://localhost:4000/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -28,8 +28,6 @@ function Add({ showAddView }) {
       .then((data) => console.log(data))
       .catch((error) => console.error("Error:", error));
   }
-  
-  
 
   const handleNestedChange = (e) => {
     setProduct({
@@ -70,18 +68,26 @@ function Add({ showAddView }) {
         onChange={handleChange}
         placeholder="Product Description"
       />
-      <input
-        name="category"
-        value={product.category}
-        onChange={handleChange}
-        placeholder="Product Category"
-      />
-      <input
-        name="image"
-        value={product.image}
-        onChange={handleChange}
-        placeholder="Product Image URL"
-      />
+      <label>Category</label>
+      <select name="category" id="category">
+  <option value="">--Select Category--</option>
+  <option value="Pocket Knives">Pocket Knives</option>
+  <option value="Daggers">Daggers</option>
+  <option value="Swords">Swords</option>
+  <option value="Resin">Resin</option>
+  <option value="Jewelry">Jewelry</option>
+  <option value="Custom">Custom</option>
+</select>
+
+
+      <label>Image</label>
+      <select name="image" required>
+        <option value="">Select an image</option>
+        <option value="swords.jfif">Swords.jfif</option>
+        <option value="seaxSword.png">SeaxSword.png</option>
+        <option value="katanaSword.png">KatanaSword.png</option>
+      </select>
+
       <input
         name="rate"
         type="number"
