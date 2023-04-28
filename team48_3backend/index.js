@@ -53,10 +53,6 @@ app.post("/add", async (req, res) => {
 });
 
 
-
-
-
-
 app.put("/update/:id", async (req, resp) => {
   const id = req.params.id;
   const query = { _id: id };
@@ -68,3 +64,16 @@ app.put("/update/:id", async (req, resp) => {
 app.listen(port, () => {
   console.log(`App listening at http://%s:%s`, host, port);
 });
+
+app.delete("/", async (req, res) => {
+  try {
+    const title = req.body.title;
+    const result = await db.collection("products").deleteOne({ title: title });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+
