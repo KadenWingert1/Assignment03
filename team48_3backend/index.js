@@ -32,25 +32,35 @@ app.get("/:id", async (req, resp) => {
 });
 
 app.post("/add", async (req, res) => {
-  console.log("Request body:", req.body);
-  let product = new Product({
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      category: req.body.category,
-      image: req.body.image,
-      rating: req.body.rating
+  console.log(req.body);
+  const p_id = Number(req.body._id); // Convert to Number
+  const ptitle = req.body.title;
+  const pprice = req.body.price;
+  const pdescription = req.body.description;
+  const pcategory = req.body.category;
+  const pimage = req.body.image;
+  const prate = req.body.rating.rate;
+  const pcount = req.body.rating.count;
+
+  const formData = new Product({
+    _id: p_id,
+    title: ptitle,
+    price: pprice,
+    description: pdescription,
+    category: pcategory,
+    image: pimage,
+    rating: { rate: prate, count: pcount },
   });
 
-  console.log("Product to be saved:", product);
-
   try {
-      const savedProduct = await product.save();
-      res.status(201).json(savedProduct);
-  } catch (error) {
-      res.status(400).json({ message: error.message });
+    await Product.create(formData);
+    const messageResponse = { message: `Product ${p_id} added correctly` };
+    res.send(JSON.stringify(messageResponse));
+  } catch (err) {
+    console.log("Error while adding a new product:" + err);
   }
 });
+
 
 
 app.put("/update/:id", async (req, resp) => {

@@ -28,7 +28,7 @@ function Add({
     price: 0.0,
     description: "",
     category: "",
-    image: "http://127.0.0.1:4000/images/",
+    image: "",
     rating: { rate: 0.0, count: 0 },
   });
 
@@ -36,7 +36,7 @@ function Add({
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
-      setAddNewProduct({ ...addNewProduct, _id: value });
+      setAddNewProduct({ ...addNewProduct, _id: parseInt(value) });
     } else if (evt.target.name === "title") {
       setAddNewProduct({ ...addNewProduct, title: value });
     } else if (evt.target.name === "price") {
@@ -62,7 +62,7 @@ function Add({
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log(e.target.value);
-    fetch("http://localhost:4000/insert", {
+    fetch("http://localhost:4000/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addNewProduct),
