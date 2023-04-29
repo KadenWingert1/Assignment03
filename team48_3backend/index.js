@@ -34,6 +34,10 @@ app.get("/:id", async (req, resp) => {
 app.post("/add", async (req, res) => {
   console.log(req.body);
   const p_id = Number(req.body._id); // Convert to Number
+  const productExists = await Product.findById(p_id);
+  if (productExists) {
+    return res.status(400).json({ message: `Product ${p_id} already exists` });
+  }
   const ptitle = req.body.title;
   const pprice = req.body.price;
   const pdescription = req.body.description;
@@ -78,7 +82,10 @@ app.listen(port, () => {
 
 app.delete("/remove/:id", async (req, res) => {
   const id = req.params.id;
-  
+  const productExists = await Product.findById(id);
+  if (!productExists) {
+    return res.status(404).json({ message: `Product ${id} does not exist` });
+  }
   try {
     const removedProduct = await Product.findByIdAndDelete(id);
     if (!removedProduct) {

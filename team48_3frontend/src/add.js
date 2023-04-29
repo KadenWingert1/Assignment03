@@ -67,7 +67,12 @@ function Add({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addNewProduct),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw response;
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log("Post a new product completed");
         console.log(data);
@@ -76,8 +81,14 @@ function Add({
           const value = Object.values(data);
           alert(value);
         }
+      })
+      .catch((error) => {
+        error.json().then((errorMessage) => {
+          alert(errorMessage.message);
+        });
       });
   }
+  
 
   return (
     <>

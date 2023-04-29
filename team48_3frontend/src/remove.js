@@ -28,15 +28,23 @@ function Remove({
     fetch(`http://localhost:4000/remove/${productId}`, {
       method: "DELETE",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw response;
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log(data);
         alert(`Product ${productId} removed`);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        error.json().then((errorMessage) => {
+          alert(errorMessage.message);
+        });
       });
   };
+  
 
   return (
     <>
