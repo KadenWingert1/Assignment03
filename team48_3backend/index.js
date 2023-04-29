@@ -74,3 +74,19 @@ app.put("/update/:id", async (req, resp) => {
 app.listen(port, () => {
   console.log(`App listening at http://%s:%s`, host, port);
 });
+
+
+app.delete("/remove/:id", async (req, res) => {
+  const id = req.params.id;
+  
+  try {
+    const removedProduct = await Product.findByIdAndDelete(id);
+    if (!removedProduct) {
+      return res.status(404).json({ message: `Product ${id} not found` });
+    }
+    res.json({ message: `Product ${id} removed` });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
