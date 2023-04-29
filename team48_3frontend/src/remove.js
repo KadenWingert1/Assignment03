@@ -33,10 +33,11 @@ function Remove({
         title: productTitle,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log("Error:" + err));
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log("Error:" + err));
   }
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
