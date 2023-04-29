@@ -64,20 +64,3 @@ app.put("/update/:id", async (req, resp) => {
 app.listen(port, () => {
   console.log(`App listening at http://%s:%s`, host, port);
 });
-
-app.delete("/deleteProduct", async (req, res) => {
-  try {
-    const title = req.body.title;
-    const result = await Product.deleteOne({ title: title });
-    if(result.deletedCount === 0) {
-      return res.status(404).json({ message: "Product not found" });
-    }
-    res.status(200).json(result);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-
-
-

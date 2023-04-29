@@ -22,45 +22,37 @@ function Remove({
   viewer2,
   setViewer2,
 }) {
-  const [productTitle, setProductTitle] = useState("");
+  const [productId, setProductId] = useState("");
 
-  function deleteProduct(title) {
-    console.log("Deleting product: " + title);
-    fetch("http://localhost:4000/deleteProduct", {
+  const handleRemoveProduct = () => {
+    fetch(`http://localhost:4000/remove/${productId}`, {
       method: "DELETE",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        title: productTitle,
-      }),
     })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log("Error:" + err));
-  }
-  
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    deleteProduct(productTitle);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert(`Product ${productId} removed`);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   return (
     <>
       {isCrudBackVisable && showRemoveView && (
-        <div>
-          <h1>Delete a Product</h1>
-          <form onSubmit={handleSubmit}>
+        <>
+          <div>
+            <h3>Remove a product:</h3>
             <input
-              name="productTitle"
-              value={productTitle}
-              onChange={(e) => setProductTitle(e.target.value)}
-              placeholder="Product Title"
-              required
-              className="input"
+              type="text"
+              placeholder="Product ID"
+              value={productId}
+              onChange={(e) => setProductId(e.target.value)}
             />
-            <button type="submit">Delete Product</button>
-          </form>
-        </div>
+            <button onClick={handleRemoveProduct}>Remove Product</button>
+          </div>
+        </>
       )}
     </>
   );
