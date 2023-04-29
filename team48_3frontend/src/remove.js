@@ -22,12 +22,36 @@ function Remove({
   viewer2,
   setViewer2
 }) {
+  const [productId, setProductId] = useState("");
+
+  const handleRemoveProduct = () => {
+    fetch(`http://localhost:4000/remove/${productId}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert(`Product ${productId} removed`);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
   return (
     <>
       {isCrudBackVisable && showRemoveView && (
         <>
-          {console.log("SHOW REMOVE VIEW: ", showRemoveView)}
-          <p>Test REMOVE view</p>
+          <div>
+            <h3>Remove a product:</h3>
+            <input
+              type="text"
+              placeholder="Product ID"
+              value={productId}
+              onChange={(e) => setProductId(e.target.value)}
+            />
+            <button onClick={handleRemoveProduct}>Remove Product</button>
+          </div>
         </>
       )}
     </>

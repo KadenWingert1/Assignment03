@@ -34,3 +34,26 @@ app.get("/:id", async (req, resp) => {
 app.listen(port, () => {
   console.log(`App listening at http://%s:%s`, host, port);
 });
+
+app.post("/insert", async (req, res) => {
+  const newProduct = new Product(req.body);
+  try {
+    const savedProduct = await newProduct.save();
+    res.json(savedProduct);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.delete("/remove/:id", async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+    await Product.deleteOne({ _id: productId });
+    res.json({ message: `Product ${productId} removed correctly` });
+  } catch (err) {
+    console.log("Error while removing the product:" + err);
+  }
+});
+
+
