@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Add({
-  showAddView,
-  isCrudBackVisable,
-}) {
+function Add({ showAddView, isCrudBackVisable }) {
   const [addNewProduct, setAddNewProduct] = useState({
     _id: null,
     title: "",
@@ -14,15 +11,14 @@ function Add({
     rating: { rate: null, count: null },
   });
 
-
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
-      setAddNewProduct({ ...addNewProduct, _id: parseInt(value) });
+      setAddNewProduct({ ...addNewProduct, _id: parseInt(Math.max(0,value)) });
     } else if (evt.target.name === "title") {
       setAddNewProduct({ ...addNewProduct, title: value });
     } else if (evt.target.name === "price") {
-      setAddNewProduct({ ...addNewProduct, price: value });
+      setAddNewProduct({ ...addNewProduct, price: Math.max(0,value) });
     } else if (evt.target.name === "description") {
       setAddNewProduct({ ...addNewProduct, description: value });
     } else if (evt.target.name === "category") {
@@ -31,12 +27,12 @@ function Add({
       const temp = value;
       setAddNewProduct({ ...addNewProduct, image: temp });
     } else if (evt.target.name === "rate") {
-      setAddNewProduct({ ...addNewProduct, rating: { rate: value } });
+      setAddNewProduct({ ...addNewProduct, rating: { rate: Math.max(0,value) } });
     } else if (evt.target.name === "count") {
       const temp = addNewProduct.rating.rate;
       setAddNewProduct({
         ...addNewProduct,
-        rating: { rate: temp, count: value },
+        rating: { rate: temp, count: Math.max(0,value) },
       });
     }
   }
@@ -70,7 +66,6 @@ function Add({
         });
       });
   }
-  
 
   return (
     <>
@@ -81,6 +76,7 @@ function Add({
             <form>
               <input
                 type="number"
+                min="0"
                 placeholder="id?"
                 name="_id"
                 value={addNewProduct._id}
@@ -95,6 +91,7 @@ function Add({
               />
               <input
                 type="number"
+                min="0"
                 placeholder="price?"
                 name="price"
                 value={addNewProduct.price}
@@ -123,13 +120,15 @@ function Add({
               />
               <input
                 type="number"
-                placeholder="rate?"
+                min="0"
+                placeholder="rate? (1-5)"
                 name="rate"
                 value={addNewProduct.rating.rate}
                 onChange={handleChange}
               />
               <input
                 type="number"
+                min="0"
                 placeholder="count?"
                 name="count"
                 value={addNewProduct.rating.count}
