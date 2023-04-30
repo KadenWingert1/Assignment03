@@ -100,104 +100,53 @@ function Add({ showAddView, isCrudBackVisable }) {
         <div className="form">
           <h3 className="motto">Add a new product :</h3>
           <form>
-            <label className="formCustomSize">ID</label>
-            <input
-              type="number"
-              placeholder="id?"
-              name="_id"
-              value={addNewProduct._id}
-              onChange={handleChange}
-              className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            />
-            <br />
-            <label className="formCustomSize">Title</label>
-            <input
-              type="text"
-              placeholder="title?"
-              name="title"
-              value={addNewProduct.title}
-              onChange={handleChange}
-              className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            />
-            <br />
-            <label className="formCustomSize">Price</label>
-            <input
-              type="number"
-              placeholder="price?"
-              name="price"
-              value={addNewProduct.price}
-              onChange={handleChange}
-              className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            />
-            <br />
-            <label className="formCustomSize">Description</label>
-            <input
-              type="text"
-              placeholder="description?"
-              name="description"
-              value={addNewProduct.description}
-              onChange={handleChange}
-              className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            />
-            <br />
-            <label className="formCustomSize">Category</label>
-            <select
-              name="category"
-              id="category"
-              onChange={handleCategoryChange}
-              className="select px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            >
-              <option value="">--Select Category--</option>
-              <option value="Pocket Knives">Pocket Knives</option>
-              <option value="Daggers">Daggers</option>
-              <option value="Swords">Swords</option>
-              <option value="Resin">Resin</option>
-              <option value="Jewelry">Jewelry</option>
-              <option value="Custom">Custom</option>
-            </select>
-            <label className="formCustomSize">Image</label>
-            <select
-              name="image"
-              required
-              onChange={handleChange}
-              className="select px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            >
-              <option value="">Select an image</option>
-              {selectedCategory &&
-                categoryImages[selectedCategory].map((image) => (
-                  <option key={image} value={image}>
-                    {image}
-                  </option>
-                ))}
-            </select>
-            <br />
-            <label className="formCustomSize">Rating</label>
-            <input
-              type="number"
-              placeholder="rate?"
-              name="rate"
-              value={addNewProduct.rating.rate}
-              onChange={handleChange}
-              className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            />
-            <br />
-            <label className="formCustomSize">Count</label>
-            <input
-              type="number"
-              placeholder="count?"
-              name="count"
-              value={addNewProduct.rating.count}
-              onChange={handleChange}
-              className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
-            />
-            <button
-              type="submit"
-              onClick={handleOnSubmit}
-              className="removeProductButton"
-            >
-              submit
-            </button>
-          </form>
+  <div className="form-group">
+    <label>ID</label>
+    <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} className="form-control" />
+  </div>
+  <div className="form-group">
+    <label>Title</label>
+    <input type="text" placeholder="title?" name="title" value={addNewProduct.title} onChange={handleChange} className="form-control" />
+  </div>
+  <div className="form-group">
+    <label>Price</label>
+    <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} className="form-control" />
+  </div>
+  <div className="form-group">
+    <label>Description</label>
+    <input type="text" placeholder="description?" name="description" value={addNewProduct.description} onChange={handleChange} className="form-control" />
+  </div>
+  <div className="form-group">
+    <label>Category</label>
+    <select name="category" id="category" onChange={handleCategoryChange} className="form-control">
+      <option value="">--Select Category--</option>
+      <option value="Pocket Knives">Pocket Knives</option>
+      <option value="Daggers">Daggers</option>
+      <option value="Swords">Swords</option>
+      <option value="Resin">Resin</option>
+      <option value="Jewelry">Jewelry</option>
+      <option value="Custom">Custom</option>
+    </select>
+  </div>
+  <div className="form-group">
+    <label>Image</label>
+    <select name="image" required onChange={handleChange} className="form-control">
+      <option value="">Select an image</option>
+      {selectedCategory && categoryImages[selectedCategory].map((image) => (
+        <option key={image} value={image}>{image}</option>
+      ))}
+    </select>
+  </div>
+  <div className="form-group">
+    <label>Rating</label>
+    <input type="number" placeholder="rate?" name="rate" value={addNewProduct.rating.rate} onChange={handleChange} className="form-control" />
+  </div>
+  <div className="form-group">
+    <label>Count</label>
+    <input type="number" placeholder="count?" name="count" value={addNewProduct.rating.count} onChange={handleChange} className="form-control" />
+  </div>
+  <button type="submit" onClick={handleOnSubmit} className="removeProductButton">submit</button>
+</form>
         </div>
       )}
     </>
