@@ -75,8 +75,11 @@ function ShowAll({
     <h1 className="catalogOfProducts mb-5">Catalog of Products</h1>
     <div className="row justify-content-between align-items-center mb-5">
       <h2 className="showAllavailable">Show All Available Products:</h2>
-      <button className="btn btn-outline-secondary" onClick={() => getAllProducts()}>Show All</button>
-      <button onClick={() => setViewer1(false)}>Hide</button>
+      <div className="btn-group" role="group" aria-label="Basic example">
+  <button type="button" className="btn btn-sm btn-primary" onClick={() => getAllProducts()}>Show All</button>
+  <button type="button" className="btn btn-sm btn-danger" onClick={() => setViewer1(false)}>Hide</button>
+</div>
+
     </div>
     <hr />
     {viewer1 && <div className="row products">{showAllItems}</div>}
