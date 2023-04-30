@@ -70,9 +70,20 @@ app.post("/add", async (req, res) => {
 app.put("/update/:id", async (req, resp) => {
   const id = req.params.id;
   const query = { _id: id };
-  const oneProduct = await Product.findOneAndUpdate(id, 20);
-  console.log(oneProduct);
-  resp.send(oneProduct);
+  const update = { 
+    $set: req.body
+  };
+  const options = {
+    new: true,
+    useFindAndModify: false
+  };
+  const updatedProduct = await Product.findOneAndUpdate(query, update, options);
+  console.log(updatedProduct);
+  if (updatedProduct) {
+    resp.send(updatedProduct);
+  } else {
+    resp.status(404).send({ message: `Product with id ${id} not found` });
+  }
 });
 
 app.listen(port, () => {

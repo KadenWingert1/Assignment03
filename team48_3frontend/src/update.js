@@ -40,22 +40,22 @@ function Update({
     }
   }
   async function updatePrice(id) {
-    const newPrice = document.getElementById("newPrice").value;
+    const newPrice = parseFloat(document.getElementById("newPrice").value);
     console.log("IN UPDATE PRICE, Element's ID: ", document.getElementById("message").value);
     console.log("IN UPDATE PRICE, New price: ", document.getElementById("newPrice").value);
     await fetch('http://localhost:4000/update/' + id, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ 
-        price: newPrice }),
-    }
-    )
+        price: newPrice
+      }),
+    })
       .then((response) => {
         if (response.ok) {
           console.log("Fetch works");
           return response.json();
         } else {
-          throw new Error("Failed to update price");
+          throw response;
         }
       })
       .then((data) => {
@@ -63,8 +63,13 @@ function Update({
         // Update the state with the updated product
         setOneProduct([data]);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        error.text().then((errorMessage) => {
+          alert(errorMessage);
+        });
+      });
   }
+  
   
 
   const showOneItem = oneProduct.map((el) => (
