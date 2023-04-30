@@ -50,15 +50,20 @@ function Remove({
     <>
       {isCrudBackVisable && showRemoveView && (
         <>
+        <div className="removeProductSection">
           <div>
-            <h3>Remove a product:</h3>
+            <h3 className="removeProductTitle">Remove a product:</h3>
             <input
-              type="text"
-              placeholder="Product ID"
-              value={productId}
-              onChange={(e) => setProductId(e.target.value)}
-            />
-            <button onClick={handleRemoveProduct}>Remove Product</button>
+            className="removeProductInput"
+            type="text"
+            placeholder="Product ID"
+            value={productId}
+            onChange={(e) => setProductId(e.target.value)}
+          />
+            <button className="removeProductButton" onClick={handleRemoveProduct}>
+            Remove Product
+          </button>
+          </div>
           </div>
         </>
       )}
