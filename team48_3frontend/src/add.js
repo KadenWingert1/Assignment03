@@ -5,13 +5,13 @@ function Add({
   isCrudBackVisable,
 }) {
   const [addNewProduct, setAddNewProduct] = useState({
-    _id: 0,
+    _id: null,
     title: "",
-    price: 0.0,
+    price: null,
     description: "",
     category: "",
     image: "",
-    rating: { rate: 0.0, count: 0 },
+    rating: { rate: null, count: null },
   });
 
 
