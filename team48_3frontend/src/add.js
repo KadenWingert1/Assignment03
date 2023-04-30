@@ -1,27 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Add({
-  showAllView,
-  setShowAllView,
-  showAddView,
-  setShowAddView,
-  showRemoveView,
-  setShowRemoveView,
-  showUpdateView,
-  setShowUpdateView,
-  isCrudVisable,
-  setIsCrudVisable,
-  isCrudBackVisable,
-  setCrudBackVisable,
-  product,
-  setProduct,
-  viewer1,
-  setViewer1,
-  oneProduct,
-  setOneProduct,
-  viewer2,
-  setViewer2,
-}) {
+function Add({ showAddView, isCrudBackVisable }) {
   const categoryImages = {
     "Pocket Knives": [
       "pocketKnife.png",
@@ -42,10 +21,9 @@ function Add({
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
-const handleCategoryChange = (e) => {
-  setSelectedCategory(e.target.value);
-};
-
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
   const [addNewProduct, setAddNewProduct] = useState({
     _id: null,
@@ -60,11 +38,11 @@ const handleCategoryChange = (e) => {
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
-      setAddNewProduct({ ...addNewProduct, _id: parseInt(Math.max(0,value)) });
+      setAddNewProduct({ ...addNewProduct, _id: parseInt(Math.max(0, value)) });
     } else if (evt.target.name === "title") {
       setAddNewProduct({ ...addNewProduct, title: value });
     } else if (evt.target.name === "price") {
-      setAddNewProduct({ ...addNewProduct, price: Math.max(0,value) });
+      setAddNewProduct({ ...addNewProduct, price: Math.max(0, value) });
     } else if (evt.target.name === "description") {
       setAddNewProduct({ ...addNewProduct, description: value });
     } else if (evt.target.name === "category") {
@@ -73,12 +51,15 @@ const handleCategoryChange = (e) => {
       const temp = value;
       setAddNewProduct({ ...addNewProduct, image: temp });
     } else if (evt.target.name === "rate") {
-      setAddNewProduct({ ...addNewProduct, rating: { rate: Math.max(0,value) } });
+      setAddNewProduct({
+        ...addNewProduct,
+        rating: { rate: Math.max(0, value) },
+      });
     } else if (evt.target.name === "count") {
       const temp = addNewProduct.rating.rate;
       setAddNewProduct({
         ...addNewProduct,
-        rating: { rate: temp, count: Math.max(0,value) },
+        rating: { rate: temp, count: Math.max(0, value) },
       });
     }
   }
@@ -119,7 +100,7 @@ const handleCategoryChange = (e) => {
         <div className="form">
           <h3 className="motto">Add a new product :</h3>
           <form>
-          <label className="formCustomSize">ID</label>
+            <label className="formCustomSize">ID</label>
             <input
               type="number"
               placeholder="id?"
@@ -128,7 +109,8 @@ const handleCategoryChange = (e) => {
               onChange={handleChange}
               className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
             />
-            <br/><label className="formCustomSize">Title</label>
+            <br />
+            <label className="formCustomSize">Title</label>
             <input
               type="text"
               placeholder="title?"
@@ -137,7 +119,8 @@ const handleCategoryChange = (e) => {
               onChange={handleChange}
               className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
             />
-            <br/><label className="formCustomSize">Price</label>
+            <br />
+            <label className="formCustomSize">Price</label>
             <input
               type="number"
               placeholder="price?"
@@ -146,7 +129,8 @@ const handleCategoryChange = (e) => {
               onChange={handleChange}
               className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
             />
-            <br/><label className="formCustomSize">Description</label>
+            <br />
+            <label className="formCustomSize">Description</label>
             <input
               type="text"
               placeholder="description?"
@@ -155,7 +139,8 @@ const handleCategoryChange = (e) => {
               onChange={handleChange}
               className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
             />
-            <br/><label className="formCustomSize">Category</label>
+            <br />
+            <label className="formCustomSize">Category</label>
             <select
               name="category"
               id="category"
@@ -185,7 +170,8 @@ const handleCategoryChange = (e) => {
                   </option>
                 ))}
             </select>
-            <br/><label className="formCustomSize">Rating</label>
+            <br />
+            <label className="formCustomSize">Rating</label>
             <input
               type="number"
               placeholder="rate?"
@@ -194,7 +180,8 @@ const handleCategoryChange = (e) => {
               onChange={handleChange}
               className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
             />
-            <br/><label className="formCustomSize">Count</label>
+            <br />
+            <label className="formCustomSize">Count</label>
             <input
               type="number"
               placeholder="count?"
@@ -203,7 +190,11 @@ const handleCategoryChange = (e) => {
               onChange={handleChange}
               className="input px-3 py-2 border-b-2 focus:outline-none focus:border-blue-500"
             />
-            <button type="submit" onClick={handleOnSubmit} className="removeProductButton">
+            <button
+              type="submit"
+              onClick={handleOnSubmit}
+              className="removeProductButton"
+            >
               submit
             </button>
           </form>
