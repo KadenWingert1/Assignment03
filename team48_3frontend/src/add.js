@@ -3,20 +3,20 @@ import React, { useState, useEffect } from "react";
 function Add({ showAddView, isCrudBackVisable }) {
   const categoryImages = {
     "Pocket Knives": [
-      "pocketKnife.png",
-      "fanghornPocketKnife.png",
-      "wispPocketKnife.png",
+      require("./images/pocketKnife.png"),
+      require("./images/fanghornPocketKnife.png"),
+      require("./images/wispPocketKnife.png"),
     ],
-    Daggers: ["tolkienDagger.png", "kunaiDagger.png"],
-    Swords: ["heleldrSword.png", "seaxSword.png", "katanaSword.png"],
+    Daggers: [require("./images/tolkienDagger.png"), require("./images/kunaiDagger.png")],
+    Swords: [require("./images/heleldrSword.png"), require("./images/seaxSword.png"), require("./images/katanaSword.png")],
     Resin: [
-      "mapleLeafResin.png",
-      "redwoodResin.png",
-      "oceanResin.png",
-      "buckeyeResin.png",
+      require("./images/mapleLeafResin.png"),
+      require("./images/redwoodResin.png"),
+      require("./images/oceanResin.png"),
+      require("./images/buckeyeResin.png"),
     ],
-    Jewelry: ["mjolnirJewelry.png"],
-    Custom: ["custom.png"],
+    Jewelry: [require("./images/mjolnirJewelry.png")],
+    Custom: [require("./images/custom.png")],
   };
 
   const [selectedCategory, setSelectedCategory] = useState("");
