@@ -1,26 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function Add({
-  showAllView,
-  setShowAllView,
   showAddView,
-  setShowAddView,
-  showRemoveView,
-  setShowRemoveView,
-  showUpdateView,
-  setShowUpdateView,
-  isCrudVisable,
-  setIsCrudVisable,
   isCrudBackVisable,
-  setCrudBackVisable,
-  product,
-  setProduct,
-  viewer1,
-  setViewer1,
-  oneProduct,
-  setOneProduct,
-  viewer2,
-  setViewer2,
 }) {
   const [addNewProduct, setAddNewProduct] = useState({
     _id: 0,
