@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 function ShowAll({
   showAllView,
   isCrudBackVisable,
@@ -11,6 +11,15 @@ function ShowAll({
   viewer2,
   setViewer2,
 }) {
+  const [shouldRefetch, setShouldRefetch] = useState(false);
+
+  useEffect(() => {
+    if (shouldRefetch) {
+      getAllProducts();
+      setShouldRefetch(false);
+    }
+  }, [shouldRefetch]);
+
   function getAllProducts() {
     fetch("http://localhost:4000/")
       .then((response) => response.json())
@@ -18,9 +27,10 @@ function ShowAll({
         console.log("Show Catalog of Products :");
         console.log(data);
         setProduct(data);
+        setViewer1(true); // Show the component after data is fetched
       });
-    setViewer1(!viewer1);
   }
+
 
   function getOneProduct(id) {
     console.log(id);
@@ -33,8 +43,8 @@ function ShowAll({
           const dataArr = [];
           dataArr.push(data);
           setOneProduct(dataArr);
+          setViewer2(true); // Show the component after data is fetched
         });
-      setViewer2(!viewer2);
     } else {
       console.log("Wrong number of Product id.");
     }
@@ -66,6 +76,7 @@ function ShowAll({
     <div className="row justify-content-between align-items-center mb-5">
       <h2 className="showAllavailable">Show All Available Products:</h2>
       <button className="btn btn-outline-secondary" onClick={() => getAllProducts()}>Show All</button>
+      <button onClick={() => setViewer1(false)}>Hide</button>
     </div>
     <hr />
     {viewer1 && <div className="row products">{showAllItems}</div>}
@@ -90,6 +101,7 @@ function ShowAll({
         >
           Show
         </button>
+        <button onClick={() => setViewer2(false)}>Hide</button>
       </div>
       {viewer2 && <div className="row products">{showOneItem}</div>}
     </div>

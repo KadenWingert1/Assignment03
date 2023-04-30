@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Update({
   showUpdateView,
@@ -8,6 +8,8 @@ function Update({
   viewer2,
   setViewer2,
 }) {
+  const [shouldRefresh, setShouldRefresh] = useState(false);
+
   function getOneProduct(id) {
     console.log(id);
     if (id >= 1 && id <= 20) {
@@ -29,6 +31,7 @@ function Update({
     const newPrice = parseFloat(document.getElementById("newPrice").value);
     console.log("IN UPDATE PRICE, Element's ID: ", document.getElementById("message").value);
     console.log("IN UPDATE PRICE, New price: ", document.getElementById("newPrice").value);
+    setShouldRefresh(true);
     await fetch('http://localhost:4000/update/' + id, {
       method: "PUT",
       headers: { "content-type": "application/json" },
@@ -48,6 +51,9 @@ function Update({
         console.log(data);
         // Update the state with the updated product
         setOneProduct([data]);
+      })
+      .then(() => {
+        setShouldRefresh(true);
       })
       .catch((error) => {
         error.text().then((errorMessage) => {

@@ -31,7 +31,7 @@ export const App = (confimation) => {
   const [showAbout, setShowAbout] = useState(false); //About page
   const [showCredits, setShowCredits] = useState(false); //Credits page
   const [isCrudVisable, setIsCrudVisable] = useState(true); //crud buttons
-
+  const [shouldRefetch, setShouldRefetch] = useState(false);
   const [showAllView, setShowAllView] = useState(false); //show all button
   const [showAddView, setShowAddView] = useState(false); //Add button
   const [showRemoveView, setShowRemoveView] = useState(false); //remove button
