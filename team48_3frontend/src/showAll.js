@@ -97,14 +97,14 @@ function ShowAll({
           onChange={(e) => getOneProduct(e.target.value)}
         />
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-sm btn-primary"
           type="button"
           id="button-addon2"
           onClick={() => getOneProduct(document.getElementById("productId").value)}
         >
           Show
         </button>
-        <button onClick={() => setViewer2(false)}>Hide</button>
+        <button className="btn btn-sm btn-danger" onClick={() => setViewer2(false)}>Hide</button>
       </div>
       {viewer2 && <div className="row products">{showOneItem}</div>}
     </div>

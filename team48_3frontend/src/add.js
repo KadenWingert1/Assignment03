@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 function Add({ showAddView, isCrudBackVisable }) {
   const categoryImages = {
     "Pocket Knives": [
-      require("./images/pocketKnife.png"),
       require("./images/fanghornPocketKnife.png"),
+      require("./images/hunterPocketKnife.png"),
       require("./images/wispPocketKnife.png"),
+      require("./images/bowiePocketKnife.png"),
+      require("./images/omenPocketKnife.png"),
     ],
     Daggers: [require("./images/tolkienDagger.png"), require("./images/kunaiDagger.png")],
     Swords: [require("./images/heleldrSword.png"), require("./images/seaxSword.png"), require("./images/katanaSword.png")],
@@ -15,7 +17,7 @@ function Add({ showAddView, isCrudBackVisable }) {
       require("./images/oceanResin.png"),
       require("./images/buckeyeResin.png"),
     ],
-    Jewelry: [require("./images/mjolnirJewelry.png")],
+    Jewelry: [require("./images/mjolnirJewelry.png"), require("./images/pendantJewelry.png") ],
     Custom: [require("./images/custom.png")],
   };
 
