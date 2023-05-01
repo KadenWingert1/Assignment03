@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./images/logo.png";
 import { Products } from "./Products";
-import { Categories } from "./Categories";
 
 function LeftPanel({
   showCategories,
@@ -86,23 +85,6 @@ function LeftPanel({
               </button>
 }
 
-              {showCategories == "true" &&
-                Categories.map((tag) => (
-                  <button
-                    key={tag}
-                    className="inline-block bg-amber-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2"
-                    style={{
-                      color: "black",
-                      backgroundColor: "burlywood",
-                      fontSize: "20px",
-                    }}
-                    onClick={() => {
-                      handleClick(tag);
-                    }}
-                  >
-                    {tag}
-                  </button>
-                ))}
             </div>
           </div>
         </div>

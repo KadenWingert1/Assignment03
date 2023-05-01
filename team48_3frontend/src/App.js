@@ -4,7 +4,6 @@ import './tailwind.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { useState } from "react";
-//import { useEffect } from "react";
 import { Products } from "./Products";
 import Crud from "./crud";
 import About from "./About";
