@@ -2,12 +2,14 @@ import React from "react";
 
 function About({
   setIsCartVisible,
-  setIsCardsVisible,
-  setShowCategories,
   showAbout,
   setShowAbout,
+  isCrudVisable,
+  setIsCrudVisable
 }) {
+  setIsCrudVisable(false);
   return (
+
     <div className="aboutPage">
       {showAbout && (
 <div>
@@ -36,10 +38,8 @@ function About({
               className="aboutBack"
               onClick={(event) => {
                 setShowAbout(false);
-               // setIsCardsVisible(true);
-                //setShowCategories(true);
                 setIsCartVisible(false);
-                //setShowCategories("true");
+                setIsCrudVisable(true);
               }}
             >
               Back

@@ -31,7 +31,6 @@ export const App = (confimation) => {
   const [showAbout, setShowAbout] = useState(false); //About page
   const [showCredits, setShowCredits] = useState(false); //Credits page
   const [isCrudVisable, setIsCrudVisable] = useState(true); //crud buttons
-  const [shouldRefetch, setShouldRefetch] = useState(false);
   const [showAllView, setShowAllView] = useState(false); //show all button
   const [showAddView, setShowAddView] = useState(false); //Add button
   const [showRemoveView, setShowRemoveView] = useState(false); //remove button
@@ -53,19 +52,18 @@ export const App = (confimation) => {
         {showAbout && (
           <About
             setIsCartVisible={setIsCartVisible}
-            setIsCardsVisible={setIsCardsVisible}
-            setShowCategories={setShowCategories}
             showAbout={showAbout}
             setShowAbout={setShowAbout}
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
           />
         )}
         {showCredits && (
           <Credits
             setIsCartVisible={setIsCartVisible}
-            setIsCardsVisible={setIsCardsVisible}
-            setShowCategories={setShowCategories}
-            showCredits={setShowCredits}
             setShowCredits={setShowCredits}
+            isCrudVisable={isCrudVisable}
+            setIsCrudVisable={setIsCrudVisable}
           />
         )}
         {console.log("Step 3 : in render_products ")}
@@ -122,14 +120,6 @@ export const App = (confimation) => {
             setShowUpdateView={setShowUpdateView}
             isCrudBackVisable={isCrudBackVisable}
             setCrudBackVisable={setCrudBackVisable}
-            product={product}
-            setProduct={setProduct}
-            viewer1={viewer1}
-            setViewer1={setViewer1}
-            oneProduct={oneProduct}
-            setOneProduct={setOneProduct}
-            viewer2={viewer2}
-            setViewer2={setViewer2}
           />
         }
         {isCrudBackVisable && (

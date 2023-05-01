@@ -2,12 +2,12 @@ import React from "react";
 
 function Credits({
   setIsCartVisible,
-  setIsCardsVisible,
-  setShowCategories,
-  showCredits,
   setShowCredits,
+  isCrudVisable,
+  setIsCrudVisable
 }) {
 
+  setIsCrudVisable(false);
   return (
     <div>
       {(
@@ -42,10 +42,8 @@ function Credits({
               className="creditsBack"
               onClick={(event) => {
                 setShowCredits(false);
-                //setIsCardsVisible(true);
-               // setShowCategories(true);
                 setIsCartVisible(false);
-                //setShowCategories("true");
+                setIsCrudVisable(true);
               }}
             >
               Back
