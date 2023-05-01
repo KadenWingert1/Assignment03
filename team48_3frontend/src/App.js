@@ -6,13 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from "react";
 //import { useEffect } from "react";
 import { Products } from "./Products";
-import Cart from "./cart";
 import Crud from "./crud";
 import About from "./About";
 import Credits from "./Credits";
 import Footer from "./Footer";
 import LeftPanel from "./LeftPanel";
-import Browse from "./browseProducts";
 import ShowAll from "./showAll";
 import Add from "./add";
 import Remove from "./remove";
@@ -96,16 +94,6 @@ export const App = (confimation) => {
             {showCategories == "confirmation" && ""}
           </div>
         </div>
-        {
-          <Cart
-            isCartVisible={isCartVisible}
-            cart={cart}
-            ProductsCategory={ProductsCategory}
-            setShowCategories={setShowCategories}
-            setShowFooter={setShowFooter}
-            showCustomForm={showCustomForm}
-          />
-        }
         {console.log("IS CART VISABLE: ", isCartVisible)}
         {
           <Crud
@@ -189,16 +177,6 @@ export const App = (confimation) => {
             setOneProduct={setOneProduct}
             viewer2={viewer2}
             setViewer2={setViewer2}
-          />
-        }
-
-        {
-          <Browse
-            ProductsCategory={ProductsCategory}
-            isCardsVisible={isCardsVisible}
-            cart={cart}
-            setCart={setCart}
-            setCustomForm={setCustomForm}
           />
         }
       </div>
